@@ -1,6 +1,5 @@
 <?php
 /**
- * @todo
  * Plugin Name:  Classic Menu in Navigation Block
  * Plugin URI:   https://www.webmandesign.eu/portfolio/classic-menu-in-navigation-block-wordpress-plugin/
  * Description:  Extending WordPress Navigation block with functionality to display classic menus.
@@ -41,7 +40,3 @@ if ( ! defined( 'CMINB_USE_CACHE' ) ) {
 // Load the functionality.
 require_once CMINB_PATH . 'includes/Autoload.php';
 WebManDesign\CMiNB\Load::init();
-
-// @todo Test with WPML.
-// @todo Update readme.txt.
-// @todo Test with Twenty Twenty-Three theme.
