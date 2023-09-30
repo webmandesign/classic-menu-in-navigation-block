@@ -1,90 +1,93 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Classic Menu in Navigation Block\n"
+"Project-Id-Version: Additional Block Styles\n"
 "Report-Msgid-Bugs-To: https://support.webmandesign.eu\n"
 "POT-Creation-Date: 2023-09-30 03:58+0200\n"
-"PO-Revision-Date: 2015-05-12 20:39+0100\n"
+"PO-Revision-Date: 2023-09-30 04:11+0200\n"
 "Last-Translator: Oliver Juhas, WebMan Design\n"
 "Language-Team: WebMan Design\n"
-"Language: en\n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/Block.php:63
 msgctxt "No menu location selector option"
 msgid "– Do not display classic menu"
-msgstr ""
+msgstr "- Nezobrazovať klasické menu"
 
 #: includes/Block.php:96
 msgid "Classic menu"
-msgstr ""
+msgstr "Klasické menu"
 
 #: includes/Block.php:97
 msgid ""
-"Use these options if you want to display a classic menu instead of Navigation "
-"block menu items."
+"Use these options if you want to display a classic menu instead of "
+"Navigation block menu items."
 msgstr ""
+"Tieto nastavenia použite, ak chcete namiesto položiek bloku Navigácie "
+"zobraziť klasické menu."
 
 #: includes/Block.php:100
 msgid "Edit classic menus →"
-msgstr ""
+msgstr "Upraviť klasické menu →"
 
 #: includes/Block.php:105
 msgid "Menu location"
-msgstr ""
+msgstr "Umiestnenie menu"
 
 #: includes/Block.php:106
 msgid "Which classic menu location should be displayed here?"
-msgstr ""
+msgstr "Ktoré umiestnenie klasického menu sa tu má zobraziť?"
 
 #: includes/Block.php:110
 msgid ""
-"Please note these options can not be previewed in editor. They apply on front-"
-"end of your website."
+"Please note these options can not be previewed in editor. They apply on "
+"front-end of your website."
 msgstr ""
+"Upozorňujeme, že tieto nastavenia nie je možné zobraziť v editore. Aplikujú "
+"sa na front-ende webstránky."
 
 #: includes/Block.php:252
 msgctxt "Non-existing navigational menu location placeholder"
 msgid "(non-existing)"
-msgstr ""
+msgstr "(neexistujúce)"
 
 #. translators: %s: menu location label.
 #: includes/Block.php:262
 #, php-format
 msgid "Error: No menu at \"%s\" location."
-msgstr ""
+msgstr "Chyba: Žiadne menu v umiestnení \"%s\"."
 
 #: includes/Menu.php:82
 msgctxt "Navigational menu location label"
 msgid "Primary"
-msgstr ""
+msgstr "Primárne"
 
 #: includes/Menu.php:83
 msgctxt "Navigational menu location label"
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundárne"
 
 #: includes/Menu.php:84
 msgctxt "Navigational menu location label"
 msgid "Tertiary"
-msgstr ""
+msgstr "Terciárne"
 
 #: includes/Menu.php:85
 msgctxt "Navigational menu location label"
 msgid "Quaternary"
-msgstr ""
+msgstr "Kvartárne"
 
 #: includes/Menu.php:86
 msgctxt "Navigational menu location label"
 msgid "Quinary"
-msgstr ""
+msgstr "Kvintárne"

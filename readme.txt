@@ -13,12 +13,12 @@ License:           GNU General Public License v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              webman, webman design, blocks, block editor, block, search, post type, taxonomy, modification, extension
 
-Extending WordPress Search block with search results modifier fields.
+Extending WordPress Navigation block with functionality to display classic menus.
 
 
 == Description ==
 
-Extending WordPress Search block with search results modifier fields.
+Extending WordPress Navigation block with functionality to display classic menus.
 
 = What problem does it solve? =
 
@@ -27,9 +27,11 @@ Extending WordPress Search block with search results modifier fields.
 
 **Classic Menu in Navigation Block** plugin provides additional search results modification fields solving these issues!
 
-In _**Search** block_ settings sidebar simply choose which post type should the search form look for. You can also choose a taxonomy and a dropdown with the taxonomy terms will be displayed in the search form on your website front-end to further narrow down the search results.
+This plugin actually converts classic block to Navigation block HTML so all the functionality of Navigation block stays the same - you can gain from accessibility, responsiveness and customization features of Navigation block while displaying classic menu.
 
-_(Note that this plugin only alters WordPress **Search** block, not the PHP [`get_search_form()` function](https://developer.wordpress.org/reference/functions/get_search_form/).)_
+Unlike Navigation block, this plugin does not convert classic menu to blocks just once. You can do changes to your classic menus and Navigation block will always display the up to date version.
+
+If you have very dynamic classic menu, you may need to disable the plugin cache by setting ...
 
 = Got a question or suggestion? =
 

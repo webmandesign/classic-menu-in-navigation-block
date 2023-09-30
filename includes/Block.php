@@ -19,6 +19,15 @@ defined( 'ABSPATH' ) || exit;
 class Block {
 
 	/**
+	 * Soft cache for currently set menu location in Navigation block.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var     string
+	 */
+	private static $current_menu_location = '';
+
+	/**
 	 * Initialization.
 	 *
 	 * @since  1.0.0
@@ -35,7 +44,7 @@ class Block {
 
 			// Filters
 
-				add_filter( 'render_block_data', __CLASS__ . '::render_block_data', 5, 2 );
+				add_filter( 'render_block_data', __CLASS__ . '::render_block_data', 5 );
 
 	} // /init
 
@@ -123,16 +132,39 @@ class Block {
 
 		// Processing
 
-			if (
-				'core/navigation' === $block['blockName']
-				&& ! empty( $block['attrs']['menuLocation'] )
-			) {
+			if ( 'core/navigation' === $block['blockName'] ) {
+				if ( ! empty( $block['attrs']['menuLocation'] ) ) {
 
-				// Prevent rendering Navigation block menu.
-				unset( $block['attrs']['ref'] );
+					// Prevent rendering Navigation block menu.
+					unset( $block['attrs']['ref'] );
 
-				// Set classic menu as inner blocks.
-				$block['innerBlocks'] = self::get_classic_menu_blocks( $block['attrs']['menuLocation'] );
+					// Set classic menu as inner blocks.
+					$block['innerBlocks'] = self::get_classic_menu_blocks( $block['attrs']['menuLocation'] );
+
+					/**
+					 * Unfortunately, we also need to set fallback inner blocks.
+					 *
+					 * These will get processed only in certain cases, mostly when Navigation
+					 * block is displayed in template (part).
+					 *
+					 * Basically, if the above code works, this filter will not be executed.
+					 * And vice versa.
+					 *
+					 * @see  WP_Block->render()->call_user_func(...)
+					 */
+					add_filter( 'block_core_navigation_render_fallback', __CLASS__ . '::render_fallback', 5 );
+
+					// Cache the block menu location attribute as we need it in `self::render_fallback()`.
+					self::$current_menu_location = $block['attrs']['menuLocation'];
+
+				} else {
+
+					/**
+					 * Make sure the classic menu fallback is not applied
+					 * when no menu location is set for Navigation block.
+					 */
+					remove_filter( 'block_core_navigation_render_fallback', __CLASS__ . '::render_fallback', 5 );
+				}
 			}
 
 
@@ -152,7 +184,6 @@ class Block {
 	 * @return  array
 	 */
 	public static function get_classic_menu_blocks( string $menu_location ): array {
-/////////// @TODO INTRODUCE TRANSIENT CACHE!
 
 		// Requirements check
 
@@ -188,6 +219,17 @@ class Block {
 
 			if ( $menu ) {
 
+				// Return cached data first.
+				$cached = Cache::get( $menu->term_id );
+				if (
+					true === CMINB_USE_CACHE
+					&& ! empty( $cached )
+				) {
+
+					return (array) $cached;
+				}
+
+				// We have no cached data, so we need to get classic menu as blocks.
 				$menu_blocks = WP_Classic_To_Block_Menu_Converter::convert( $menu );
 
 				if (
@@ -195,25 +237,31 @@ class Block {
 					&& ! empty( $menu_blocks )
 				) {
 
-					return parse_blocks( $menu_blocks );
+					$menu_blocks = parse_blocks( $menu_blocks );
+
+					// Cache the data first.
+					Cache::set( $menu->term_id, (array) $menu_blocks );
+
+					return $menu_blocks;
 				}
 			} else {
 
 				if ( current_user_can( 'edit_theme_options' ) ) {
 
 					$menu_locations = get_registered_nav_menus();
-					$menu_location  = ( ! empty( $menu_locations[ $menu_location ] ) ) ? ( $menu_locations[ $menu_location ] ) : ( esc_html_x( '{non-existing}', 'Non-existing navigational menu location placeholder', 'classic-menu-in-navigation-block' ) );
+					$menu_location  = ( ! empty( $menu_locations[ $menu_location ] ) ) ? ( $menu_locations[ $menu_location ] ) : ( esc_html_x( '(non-existing)', 'Non-existing navigational menu location placeholder', 'classic-menu-in-navigation-block' ) );
 
 					return array(
 						array(
 							'blockName' => 'core/navigation-link',
 							'attrs' => array(
-								'label' => sprintf(
+								'className' => 'has-vivid-red-background-color has-white-color',
+								'url'       => esc_url( admin_url( 'nav-menus.php?action=locations' ) ),
+								'label'     => '&ensp;' . sprintf(
 									/* translators: %s: menu location label. */
 									esc_attr__( 'Error: No menu at "%s" location.', 'classic-menu-in-navigation-block' ),
-									$menu_location
-								),
-								'url' => esc_url( admin_url( 'nav-menus.php?action=locations' ) ),
+									'<strong>' . $menu_location . '</strong>'
+								) . '&ensp;',
 							),
 						),
 					);
@@ -224,5 +272,31 @@ class Block {
 			}
 
 	} // /get_classic_menu_blocks
+
+	/**
+	 * Rendering classic menu as Navigation block fallback inner blocks.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param  array $fallback_blocks
+	 *
+	 * @return  array
+	 */
+	public static function render_fallback( array $fallback_blocks ): array {
+
+		// Variables
+
+			$classic_menu_blocks = self::get_classic_menu_blocks( self::$current_menu_location );
+
+
+		// Output
+
+			if ( ! empty( $classic_menu_blocks ) ) {
+				return $classic_menu_blocks;
+			} else {
+				return $fallback_blocks;
+			}
+
+	} // /render_fallback
 
 }

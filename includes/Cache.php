@@ -46,7 +46,7 @@ class Cache {
 
 		// Output
 
-			return (array) get_transient( self::$transient . '--' . $menu_id );
+			return array_filter( (array) get_transient( self::$transient . '--' . $menu_id ) );
 
 	} // /get
 
@@ -66,7 +66,7 @@ class Cache {
 
 			set_transient(
 				self::$transient . '--' . $menu_id,
-				$data,
+				array_filter( $data ),
 				self::$expiration
 			);
 

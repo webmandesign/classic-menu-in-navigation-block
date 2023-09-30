@@ -31,7 +31,7 @@ class Load {
 
 			// Actions
 
-				add_action( 'init', __CLASS__ . '::load_plugin_textdomain' );
+				add_action( 'init', __CLASS__ . '::load_plugin_textdomain', 0 );
 
 	} // /init
 
@@ -46,7 +46,7 @@ class Load {
 
 		// Processing
 
-			load_plugin_textdomain( 'classic-menu-in-navigation-block', false, CMINB_PATH . '/languages' );
+			load_plugin_textdomain( 'classic-menu-in-navigation-block', false, basename( CMINB_PATH ) . '/languages' );
 
 	} // /load_plugin_textdomain
 

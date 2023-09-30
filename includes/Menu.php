@@ -58,7 +58,8 @@ class Menu {
 
 			// Actions
 
-				add_action( 'after_setup_theme', __CLASS__ . '::register', 5 );
+				// This has to be hooked later than `load_plugin_textdomain()`.
+				add_action( 'init', __CLASS__ . '::register', 5 );
 
 				add_action( 'wp_update_nav_menu', __NAMESPACE__ . '\Cache::delete' );
 				add_action( 'wp_delete_nav_menu', __NAMESPACE__ . '\Cache::delete' );
