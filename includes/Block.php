@@ -5,7 +5,8 @@
  * @package    Classic Menu in Navigation Block
  * @copyright  WebMan Design, Oliver Juhas
  *
- * @since  1.0.0
+ * @since    1.0.0
+ * @version  1.0.1
  */
 
 namespace WebManDesign\CMiNB;
@@ -51,7 +52,8 @@ class Block {
 	/**
 	 * Enqueue block scripts.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.1
 	 *
 	 * @return  void
 	 */
@@ -91,7 +93,7 @@ class Block {
 					$handle,
 					'var ClassicMenuInNavigationBlockData={'
 					. 'menuLocations:[' . implode( ',', $menu_locations ) . '],'
-					. 'texts:' . json_encode( array(
+					. 'texts:' . wp_json_encode( array(
 						'panel' => array(
 							'title'       => esc_html__( 'Classic menu', 'classic-menu-in-navigation-block' ),
 							'description' => esc_html__( 'Use these options if you want to display a classic menu instead of Navigation block menu items.', 'classic-menu-in-navigation-block' ),
@@ -177,7 +179,8 @@ class Block {
 	/**
 	 * Renders classic menu as blocks.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.1
 	 *
 	 * @param  string $menu_location
 	 *
@@ -194,6 +197,15 @@ class Block {
 
 		// Variables
 
+			$locations = get_nav_menu_locations(); // Do not soft cache this!
+
+			foreach ( $locations as $location => $assigned_menu ) {
+				if ( 0 === strpos( $menu_location, $location ) ) {
+					$menu_location = $location;
+					break;
+				}
+			}
+
 			$menu_args = array(
 				'theme_location' => $menu_location,
 			);
@@ -205,7 +217,6 @@ class Block {
 			$menu = wp_get_nav_menu_object( $menu_args['menu'] );
 
 			// Afterwards, get the classic menu based on menu location.
-			$locations = get_nav_menu_locations(); // Do not soft cache this!
 			if (
 				empty( $menu )
 				&& ! empty( $menu_args['theme_location'] )
