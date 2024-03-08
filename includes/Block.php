@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.0.1
+ * @version  1.0.2
  */
 
 namespace WebManDesign\CMiNB;
@@ -180,7 +180,7 @@ class Block {
 	 * Renders classic menu as blocks.
 	 *
 	 * @since    1.0.0
-	 * @version  1.0.1
+	 * @version  1.0.2
 	 *
 	 * @param  string $menu_location
 	 *
@@ -248,12 +248,15 @@ class Block {
 					&& ! empty( $menu_blocks )
 				) {
 
-					$menu_blocks = parse_blocks( $menu_blocks );
+					$menu_blocks = (array) parse_blocks( $menu_blocks );
 
 					// Cache the data first.
-					Cache::set( $menu->term_id, (array) $menu_blocks );
+					Cache::set( $menu->term_id, $menu_blocks );
 
 					return $menu_blocks;
+				} else {
+
+					return array();
 				}
 			} else {
 
@@ -282,18 +285,25 @@ class Block {
 				}
 			}
 
+
+		// Output
+
+			// Fallback output, if we get this far...
+			return array();
+
 	} // /get_classic_menu_blocks
 
 	/**
 	 * Rendering classic menu as Navigation block fallback inner blocks.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.2
 	 *
 	 * @param  array $fallback_blocks
 	 *
 	 * @return  array
 	 */
-	public static function render_fallback( array $fallback_blocks ): array {
+	public static function render_fallback( array $fallback_blocks = array() ): array {
 
 		// Variables
 
