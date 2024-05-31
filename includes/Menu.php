@@ -5,7 +5,8 @@
  * @package    Classic Menu in Navigation Block
  * @copyright  WebMan Design, Oliver Juhas
  *
- * @since  1.0.0
+ * @since    1.0.0
+ * @version  1.0.3
  */
 
 namespace WebManDesign\CMiNB;
@@ -69,7 +70,8 @@ class Menu {
 	/**
 	 * Register custom menu locations.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.3
 	 *
 	 * @return  void
 	 */
@@ -87,7 +89,7 @@ class Menu {
 						'quinary'    => esc_html_x( 'Quinary', 'Navigational menu location label', 'classic-menu-in-navigation-block' ),
 					),
 					0,
-					max( 1, absint( get_option( 'cminb_menu_locations_count', 3 ) ) )
+					max( 1, absint( get_theme_mod( Options::$id['menu_locations_count'], 3 ) ) )
 				)
 			);
 

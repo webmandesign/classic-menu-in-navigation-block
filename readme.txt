@@ -5,12 +5,12 @@ Donate link:       https://www.webmandesign.eu/contact/#donation
 Author URI:        https://www.webmandesign.eu
 Plugin URI:        https://www.webmandesign.eu/portfolio/classic-menu-in-navigation-block-wordpress-plugin/
 Requires at least: 6.2
-Tested up to:      6.4
+Tested up to:      6.5
 Requires PHP:      7.0
-Stable tag:        1.0.2
+Stable tag:        1.0.3
 License:           GPL-3.0-or-later
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
-Tags:              webman, webman design, site editor, block editor, block, navigation, menu, classic, modification, multilingual, fse, theme
+Tags:              block, navigation, menu, classic, multilingual
 
 Extending WordPress Navigation block with functionality to display classic menus.
 
@@ -62,7 +62,9 @@ Yes.
 
 = Does it work with WPML plugin? =
 
-Yes.
+[WPML can translate Site Editor and navigation block](https://wpml.org/documentation/getting-started-guide/translating-content-created-using-gutenberg-editor/translating-sites-that-use-full-site-editing/), so there is no need to use this plugin with WPML.
+
+But if you decide to use **Classic Menu in Navigation Block** with WPML, make sure to disable the block menu cache (**Appearance → Menus → Classic Menu in Navigation Block → "Block menu cache"**), and translate the modified block theme templates and/or template parts (**WPML → Translation Management**, or check the WPML documentation for more info).
 
 
 == Screenshots ==
@@ -79,6 +81,9 @@ Please see the [`changelog.md` file](https://github.com/webmandesign/classic-men
 
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Adding plugin options, visualizing modified Navigation block in editor.
 
 = 1.0.2 =
 Fixing PHP error in specific cases.

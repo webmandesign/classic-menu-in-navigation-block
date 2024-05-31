@@ -4,7 +4,8 @@
  * @package    Classic Menu in Navigation Block
  * @copyright  WebMan Design, Oliver Juhas
  *
- * @since  1.0.0
+ * @since    1.0.0
+ * @version  1.0.3
  */
 
 ( ( wp ) => {
@@ -116,6 +117,43 @@
 				// Output
 
 					return withInspectorControls( BlockEdit );
+			}
+		);
+
+		addFilter(
+			'editor.BlockListBlock',
+			'classic-menu-in-navigation-block/mods/add-block-class',
+			( BlockListBlock ) => {
+
+				// Variables
+
+					const withBlockClass = HOComponent( ( BlockListBlock ) => { return ( props ) => {
+
+						// Requirements check
+
+							if ( 'core/navigation' !== props.name ) {
+								return Element( BlockListBlock, props );
+							}
+
+
+						// Variables
+
+							const
+								{ menuLocation } = props.attributes,
+								customBlockClass = ( menuLocation ) ? ( 'has-classic-menu has-classic-menu-location--' + menuLocation ) : ( '' );
+
+
+						// Output
+
+							return Element( BlockListBlock, { ...props, className : customBlockClass } );
+
+					} } );
+
+
+				// Output
+
+					return withBlockClass( BlockListBlock );
+
 			}
 		);
 

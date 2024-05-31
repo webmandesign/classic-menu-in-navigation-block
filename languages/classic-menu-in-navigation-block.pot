@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Classic Menu in Navigation Block\n"
 "Report-Msgid-Bugs-To: https://support.webmandesign.eu\n"
-"POT-Creation-Date: 2023-09-30 03:58+0200\n"
+"POT-Creation-Date: 2024-05-31 11:35+0200\n"
 "PO-Revision-Date: 2015-05-12 20:39+0100\n"
 "Last-Translator: Oliver Juhas, WebMan Design\n"
 "Language-Team: WebMan Design\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -20,71 +20,89 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/Block.php:63
+#: includes/Block.php:69
 msgctxt "No menu location selector option"
 msgid "– Do not display classic menu"
 msgstr ""
 
-#: includes/Block.php:96
+#: includes/Block.php:102
 msgid "Classic menu"
 msgstr ""
 
-#: includes/Block.php:97
+#: includes/Block.php:103
 msgid ""
 "Use these options if you want to display a classic menu instead of Navigation "
 "block menu items."
 msgstr ""
 
-#: includes/Block.php:100
+#: includes/Block.php:106
 msgid "Edit classic menus →"
 msgstr ""
 
-#: includes/Block.php:105
+#: includes/Block.php:111
 msgid "Menu location"
 msgstr ""
 
-#: includes/Block.php:106
+#: includes/Block.php:112
 msgid "Which classic menu location should be displayed here?"
 msgstr ""
 
-#: includes/Block.php:110
+#: includes/Block.php:116
 msgid ""
 "Please note these options can not be previewed in editor. They apply on front-"
 "end of your website."
 msgstr ""
 
-#: includes/Block.php:252
+#: includes/Block.php:303
 msgctxt "Non-existing navigational menu location placeholder"
 msgid "(non-existing)"
 msgstr ""
 
 #. translators: %s: menu location label.
-#: includes/Block.php:262
+#: includes/Block.php:313
 #, php-format
 msgid "Error: No menu at \"%s\" location."
 msgstr ""
 
-#: includes/Menu.php:82
+#: includes/Menu.php:85
 msgctxt "Navigational menu location label"
 msgid "Primary"
 msgstr ""
 
-#: includes/Menu.php:83
+#: includes/Menu.php:86
 msgctxt "Navigational menu location label"
 msgid "Secondary"
 msgstr ""
 
-#: includes/Menu.php:84
+#: includes/Menu.php:87
 msgctxt "Navigational menu location label"
 msgid "Tertiary"
 msgstr ""
 
-#: includes/Menu.php:85
+#: includes/Menu.php:88
 msgctxt "Navigational menu location label"
 msgid "Quaternary"
 msgstr ""
 
-#: includes/Menu.php:86
+#: includes/Menu.php:89
 msgctxt "Navigational menu location label"
 msgid "Quinary"
+msgstr ""
+
+#: includes/Options.php:68
+msgid "Classic Menu in Navigation Block"
+msgstr ""
+
+#: includes/Options.php:92
+msgid "Block menu cache"
+msgstr ""
+
+#: includes/Options.php:93
+msgid ""
+"With some multilingual plugins (such as WPML) it may help to disable this "
+"cache."
+msgstr ""
+
+#: includes/Options.php:111
+msgid "Number of menu locations"
 msgstr ""

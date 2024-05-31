@@ -6,13 +6,14 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.0.2
+ * @version  1.0.3
  */
 
 namespace WebManDesign\CMiNB;
 
 use WP_Classic_To_Block_Menu_Converter;
 use WP_Error;
+use WP_HTML_Tag_Processor;
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
@@ -31,7 +32,8 @@ class Block {
 	/**
 	 * Initialization.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.3
 	 *
 	 * @return  void
 	 */
@@ -43,7 +45,11 @@ class Block {
 
 				add_action( 'enqueue_block_editor_assets', __CLASS__ . '::enqueue_scripts' );
 
+				add_action( 'enqueue_block_assets', __CLASS__ . '::editor_styles' );
+
 			// Filters
+
+				add_filter( 'render_block_core/navigation', __CLASS__ . '::render__navigation', 5, 2 );
 
 				add_filter( 'render_block_data', __CLASS__ . '::render_block_data', 5 );
 
@@ -122,6 +128,65 @@ class Block {
 	} // /enqueue_scripts
 
 	/**
+	 * Add block editor stylesheet.
+	 *
+	 * @since  1.0.3
+	 *
+	 * @return  void
+	 */
+	public static function editor_styles() {
+
+		// Requirements check
+
+			// Required check for `enqueue_block_assets` hook.
+			if ( ! is_admin() ) {
+				return;
+			}
+
+
+		// Processing
+
+			wp_enqueue_style(
+				'classic-menu-in-navigation-block',
+				CMINB_URL . 'blocks/navigation/editor.css',
+				array(),
+				'v' . CMINB_VERSION
+			);
+
+	} // /editor_styles
+
+	/**
+	 * Block output modification: Navigation block.
+	 *
+	 * @since  1.0.3
+	 *
+	 * @param  string $block_content  The rendered content. Default null.
+	 * @param  array  $block          The block being rendered.
+	 *
+	 * @return  string
+	 */
+	public static function render__navigation( string $block_content, array $block ): string {
+
+		// Processing
+
+			if ( ! empty( $block['attrs']['menuLocation'] ) ) {
+
+				$html = new WP_HTML_Tag_Processor( $block_content );
+
+				$html->next_tag( 'nav' );
+				$html->add_class( 'has-classic-menu has-classic-menu-location--' . sanitize_html_class( $block['attrs']['menuLocation'] ) );
+
+				$block_content = $html->get_updated_html();
+			}
+
+
+		// Output
+
+			return $block_content;
+
+	} // /render__navigation
+
+	/**
 	 * Prepare Navigation block output modifications.
 	 *
 	 * @since  1.0.0
@@ -180,7 +245,7 @@ class Block {
 	 * Renders classic menu as blocks.
 	 *
 	 * @since    1.0.0
-	 * @version  1.0.2
+	 * @version  1.0.3
 	 *
 	 * @param  string $menu_location
 	 *
@@ -231,13 +296,13 @@ class Block {
 			if ( $menu ) {
 
 				// Return cached data first.
-				$cached = Cache::get( $menu->term_id );
-				if (
-					true === CMINB_USE_CACHE
-					&& ! empty( $cached )
-				) {
+				if ( Cache::is_enabled() ) {
 
-					return (array) $cached;
+					$cached = Cache::get( $menu->term_id );
+
+					if ( ! empty( $cached ) ) {
+						return (array) $cached;
+					}
 				}
 
 				// We have no cached data, so we need to get classic menu as blocks.
@@ -251,7 +316,9 @@ class Block {
 					$menu_blocks = (array) parse_blocks( $menu_blocks );
 
 					// Cache the data first.
-					Cache::set( $menu->term_id, $menu_blocks );
+					if ( Cache::is_enabled() ) {
+						Cache::set( $menu->term_id, $menu_blocks );
+					}
 
 					return $menu_blocks;
 				} else {

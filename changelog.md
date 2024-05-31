@@ -1,5 +1,29 @@
 # Classic Menu in Navigation Block changelog
 
+## 1.0.3, 20240531
+
+### Added
+- Plugin options (Appearance → Customize → Menus → Classic Menu in Navigation Block)
+
+### Updated
+- Visually marking the Navigation block when custom menu location is set in editor
+- Localization
+
+### File updates
+	changelog.md
+	classic-menu-in-navigation-block.php
+	readme.txt
+	blocks/navigation/dev/editor.scss
+	blocks/navigation/dev/mods.js
+	includes/Autoload.php
+	includes/Block.php
+	includes/Cache.php
+	includes/Load.php
+	includes/Menu.php
+	includes/Options.php
+	languages/*.*
+
+
 ## 1.0.2, 20240308
 
 ### Fixed

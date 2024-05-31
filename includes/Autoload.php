@@ -7,7 +7,8 @@
  * @package    Classic Menu in Navigation Block
  * @copyright  WebMan Design, Oliver Juhas
  *
- * @since  1.0.0
+ * @since    1.0.0
+ * @version  1.0.3
  */
 
 // Exit if accessed directly.
@@ -37,6 +38,7 @@ class Classic_Menu_in_Navigation_Block_Autoload {
 	 * Array of white-listed, allowed files for improved security.
 	 *
 	 * @since    1.0.0
+	 * @version  1.0.3
 	 * @access   private
 	 * @var      array
 	 */
@@ -45,6 +47,7 @@ class Classic_Menu_in_Navigation_Block_Autoload {
 		'/Cache.php',
 		'/Load.php',
 		'/Menu.php',
+		'/Options.php',
 	);
 
 	/**

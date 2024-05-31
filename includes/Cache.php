@@ -5,7 +5,8 @@
  * @package    Classic Menu in Navigation Block
  * @copyright  WebMan Design, Oliver Juhas
  *
- * @since  1.0.0
+ * @since    1.0.0
+ * @version  1.0.3
  */
 
 namespace WebManDesign\CMiNB;
@@ -88,5 +89,20 @@ class Cache {
 			delete_transient( self::$transient . '--' . $menu_id );
 
 	} // /delete
+
+	/**
+	 * Is cache enabled?
+	 *
+	 * @since  1.0.3
+	 *
+	 * @return  bool
+	 */
+	public static function is_enabled(): bool {
+
+		// Output
+
+			return get_theme_mod( Options::$id['cache'], true );
+
+	} // /is_enabled
 
 }
