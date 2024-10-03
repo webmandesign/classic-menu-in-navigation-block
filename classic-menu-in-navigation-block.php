@@ -3,10 +3,10 @@
  * Plugin Name:  Classic Menu in Navigation Block
  * Plugin URI:   https://www.webmandesign.eu/portfolio/classic-menu-in-navigation-block-wordpress-plugin/
  * Description:  Extending WordPress Navigation block with functionality to display classic menus.
- * Version:      1.0.3
+ * Version:      1.0.4
  * Author:       WebMan Design, Oliver Juhas
  * Author URI:   https://www.webmandesign.eu/
- * License:      GNU General Public License v3
+ * License:      GPL-3.0-or-later
  * License URI:  http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:  classic-menu-in-navigation-block
  * Domain Path:  /languages
@@ -29,7 +29,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Constants.
-define( 'CMINB_VERSION', '1.0.3' );
+define( 'CMINB_VERSION', '1.0.4' );
 define( 'CMINB_FILE', __FILE__ );
 define( 'CMINB_PATH', plugin_dir_path( CMINB_FILE ) ); // Trailing slashed.
 define( 'CMINB_URL', plugin_dir_url( CMINB_FILE ) ); // Trailing slashed.

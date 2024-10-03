@@ -5,9 +5,9 @@ Donate link:       https://www.webmandesign.eu/contact/#donation
 Author URI:        https://www.webmandesign.eu
 Plugin URI:        https://www.webmandesign.eu/portfolio/classic-menu-in-navigation-block-wordpress-plugin/
 Requires at least: 6.2
-Tested up to:      6.5
+Tested up to:      6.7
 Requires PHP:      7.0
-Stable tag:        1.0.3
+Stable tag:        1.0.4
 License:           GPL-3.0-or-later
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              block, navigation, menu, classic, multilingual
@@ -52,9 +52,13 @@ In case of any question or suggestion regarding this plugin, feel free to ask at
 2. In site editor (**Appearance → Edit**) modify your Navigation block to display the menu location.
 3. Preview the results on front-end of your website. Your Navigation block now displays your classic menu and yet it keeps all its functionality.
 
+= My menu experiences issues! =
+
+Depending on your multilingual plugin, you may experience some issues with your menus. Such as multiple current (active) menu items. To resolve these issues, try to disable block menu cache in **Appearance → Menus → Classic Menu in Navigation Block**.
+
 = Can I disable cache? =
 
-Yes. When you use a plugin that modifies classic menu very dynamically, you may need to disable this plugin cache. You can do so by adding `define( 'CMINB_USE_CACHE', false );` code into your WordPress installation `wp-config.php` file.
+Yes, you can do so in **Appearance → Menus → Classic Menu in Navigation Block**. This is helpful when your multilingual plugin renders classic menus dynamically.
 
 = Does it work with Polylang plugin? =
 
@@ -65,6 +69,10 @@ Yes.
 [WPML can translate Site Editor and navigation block](https://wpml.org/documentation/getting-started-guide/translating-content-created-using-gutenberg-editor/translating-sites-that-use-full-site-editing/), so there is no need to use this plugin with WPML.
 
 But if you decide to use **Classic Menu in Navigation Block** with WPML, make sure to disable the block menu cache (**Appearance → Menus → Classic Menu in Navigation Block → "Block menu cache"**), and translate the modified block theme templates and/or template parts (**WPML → Translation Management**, or check the WPML documentation for more info).
+
+= Where are plugin options? =
+
+You can find them at **Appearance → Menus → Classic Menu in Navigation Block**.
 
 
 == Screenshots ==

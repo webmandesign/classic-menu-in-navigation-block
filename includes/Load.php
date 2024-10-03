@@ -32,25 +32,6 @@ class Load {
 			Menu::init();
 			Options::init();
 
-			// Actions
-
-				add_action( 'init', __CLASS__ . '::load_plugin_textdomain', 0 );
-
 	} // /init
-
-	/**
-	 * Localization initialization.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return  void
-	 */
-	public static function load_plugin_textdomain() {
-
-		// Processing
-
-			load_plugin_textdomain( 'classic-menu-in-navigation-block', false, basename( CMINB_PATH ) . '/languages' );
-
-	} // /load_plugin_textdomain
 
 }

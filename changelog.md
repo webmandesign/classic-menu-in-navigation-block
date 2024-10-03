@@ -1,5 +1,17 @@
 # Classic Menu in Navigation Block changelog
 
+## 1.0.4, 20241003
+
+### Fixed
+- Removing obsolete `load_plugin_textdomain()`
+
+### File updates
+	changelog.md
+	classic-menu-in-navigation-block.php
+	readme.txt
+	includes/Load.php
+
+
 ## 1.0.3, 20240531
 
 ### Added
