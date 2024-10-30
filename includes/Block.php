@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.0.3
+ * @version  1.0.5
  */
 
 namespace WebManDesign\CMiNB;
@@ -189,7 +189,8 @@ class Block {
 	/**
 	 * Prepare Navigation block output modifications.
 	 *
-	 * @since  1.0.0
+	 * @since    1.0.0
+	 * @version  1.0.5
 	 *
 	 * @param  array $block
 	 *
@@ -223,6 +224,10 @@ class Block {
 
 					// Cache the block menu location attribute as we need it in `self::render_fallback()`.
 					self::$current_menu_location = $block['attrs']['menuLocation'];
+
+					if ( empty( $block['attrs']['ariaLabel'] ) ) {
+						$block['attrs']['ariaLabel'] = wp_get_nav_menu_name( $block['attrs']['menuLocation'] );
+					}
 
 				} else {
 

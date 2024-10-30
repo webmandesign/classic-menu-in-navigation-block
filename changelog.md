@@ -1,5 +1,17 @@
 # Classic Menu in Navigation Block changelog
 
+## 1.0.5, 20241030
+
+### Fixed
+- Accessibility issue: menu ARIA label
+
+### File updates
+	changelog.md
+	classic-menu-in-navigation-block.php
+	readme.txt
+	includes/Block.php
+
+
 ## 1.0.4, 20241003
 
 ### Fixed

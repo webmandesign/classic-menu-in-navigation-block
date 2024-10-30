@@ -7,7 +7,7 @@ Plugin URI:        https://www.webmandesign.eu/portfolio/classic-menu-in-navigat
 Requires at least: 6.2
 Tested up to:      6.7
 Requires PHP:      7.0
-Stable tag:        1.0.4
+Stable tag:        1.0.5
 License:           GPL-3.0-or-later
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              block, navigation, menu, classic, multilingual
@@ -90,14 +90,5 @@ Please see the [`changelog.md` file](https://github.com/webmandesign/classic-men
 
 == Upgrade Notice ==
 
-= 1.0.3 =
-Adding plugin options, visualizing modified Navigation block in editor.
-
-= 1.0.2 =
-Fixing PHP error in specific cases.
-
-= 1.0.1 =
-Making the plugin work with different language menu locations.
-
-= 1.0.0 =
-Initial release.
+= 1.0.5 =
+Fixing accessibility issue (menu ARIA label).
